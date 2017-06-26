@@ -23,11 +23,6 @@ import rx.functions.Action1;
 
 public class AppBindingAdapter {
 
-  @BindingAdapter("imageResourceId")
-  public static void loadImage(ImageView view, int resourceId) {
-    Glide.with(view.getContext()).load(resourceId).into(view);
-  }
-
   @BindingAdapter("imageResourceUrl")
   public static void loadImage(ImageView view, Object resourceUrl) {
     if (IsEmpty.object(resourceUrl) | IsEmpty.string(String.valueOf(resourceUrl))) {
@@ -53,12 +48,6 @@ public class AppBindingAdapter {
   @BindingAdapter("adapter")
   public static void setAdapter(RecyclerView view, RecyclerView.Adapter adapter) {
     view.setAdapter(adapter);
-  }
-
-  @BindingAdapter("textDynamicColor")
-  public static void setTextDynamicColor(TextView view, int resourceId) {
-    Log.d("hello", resourceId + "");
-    // Glide.with(view.getContext()).load(resourceId).into(view);
   }
 
   /**

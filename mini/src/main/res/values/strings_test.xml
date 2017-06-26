@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="test_1">测试1</string>
+    <string name="test_2">测试2</string>
+    <string name="test_3">测试3</string>
+    <string name="test_4">测试4</string>
+    <string name="test_5">测试5</string>
+    <string name="test_6">测试6</string>
+    <string name="test_7">测试7</string>
+    <string name="test_8">测试8</string>
+    <string name="test_9">测试9</string>
+    <string name="test_10">测试10</string>
+    <string name="test_11">测试11</string>
+    <string name="test_12">测试12</string>
+    <string name="test_13">测试13</string>
+</resources>
