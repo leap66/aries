@@ -1,48 +1,36 @@
 package com.leap.aries.presentation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.leap.aries.R;
-import com.leap.aries.databinding.ActivityMainBinding;
+import com.leap.aries.databinding.ActivityMain2Binding;
 import com.leap.aries.presentation.base.BaseActivity;
 import com.leap.mini.util.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends BaseActivity {
-  private String TAG = "MainActivity";
-  private ActivityMainBinding binding;
+public class Main2Activity extends BaseActivity {
+  private String TAG = "Main2Activity";
+  private ActivityMain2Binding binding;
   private Context context;
-  private MainPagerAdapter adapter;
-  private List<MainFragment> fragments;
 
   @Override
   protected void initComponent() {
-    binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    binding = DataBindingUtil.setContentView(this, R.layout.activity_main2);
     context = this;
   }
 
   @Override
   protected void loadData(Bundle savedInstanceState) {
     EventBus.getDefault().post("");
-    fragments = new ArrayList<>();
-    fragments.add(new MainFragment());
-    fragments.add(new MainFragment());
-    adapter = new MainPagerAdapter(getSupportFragmentManager());
-    binding.viewPage.setAdapter(adapter);
   }
 
   @Override
@@ -55,7 +43,14 @@ public class MainActivity extends BaseActivity {
         return false;
       }
     });
+    binding.testView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(Main2Activity.this, MainActivity.class));
+      }
+    });
   }
+
   // onCreate, onStart, onResume, onPause, onStop, onDestroy
 
   @Override
@@ -93,21 +88,5 @@ public class MainActivity extends BaseActivity {
   protected void onDestroy() {
     super.onDestroy();
     Log.i(TAG, "onDestroy");
-  }
-
-  private class MainPagerAdapter extends FragmentPagerAdapter {
-    MainPagerAdapter(FragmentManager fm) {
-      super(fm);
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-      return fragments.get(position);
-    }
-
-    @Override
-    public int getCount() {
-      return fragments.size();
-    }
   }
 }
